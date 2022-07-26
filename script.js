@@ -25,7 +25,10 @@ let score = 20;
 
 //* We have to declare a highScore wchich will be changing if our score is better than last highscore value;
 let highScore = 0;
-document.querySelector('.number').textContent = secretNumber;
+// document.querySelector('.number').textContent = secretNumber; // it show a secretNumber in number div
+
+//* Making a refrence to object ,,guess" we can use it later
+const guessV = document.querySelector('.guess');
 
 //*Functions to display a message
 const displayMessage = function (message) {
@@ -80,13 +83,25 @@ document.querySelector('.check').addEventListener('click', function () {
   //*  if value is higher than 20 give alert message to user
 
   //* One way to make condition check about the value
-  if (document.querySelector('.guess').value > 20) {
+  /* if (guess_value) {
     alert("The value can't be higer than 20");
     gameReset();
-  } else if (document.querySelector('.guess').value < 0) {
+  } else if (guess_value < 0) {
     alert("The value can't be less than 0 ");
     gameReset();
+  } */
+
+  //! We are using reference to optimizatize a code
+  if (guessV.value > 20 || guessV.value < 0) {
+    alert('The value must be from 1 to 20');
+    gameReset();
   }
+
+  //* Previous code
+  /*
+   * if(document.querySelector('.guess').value>20 || document.querySelector('.guess').value<0)
+   *   alert('The value must be from 1 to 20');
+   */
 
   //* Second  to make condition check about the value
   /*   document.querySelector('.guess').value > 20
